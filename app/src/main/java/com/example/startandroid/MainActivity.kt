@@ -1,5 +1,6 @@
 package com.example.startandroid
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -26,5 +27,17 @@ class MainActivity : AppCompatActivity() {
         count++
 
         counter.text = count.toString()
+    }
+
+    fun randomMe(view: View) {
+        val randomIntent = Intent(this, SecondActivity::class.java)
+
+        val counter = findViewById<TextView>(R.id.counter)
+        val countString = counter.text.toString()
+
+        var count: Int = Integer.parseInt(countString)
+
+        randomIntent.putExtra(SecondActivity.TOTAL_COUNT, count)
+        startActivity(randomIntent)
     }
 }
